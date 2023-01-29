@@ -13,6 +13,10 @@ for (( i=0; i<${#INPUTS[*]}; ++i)); do
     STATUS="$(cmp --silent test_output.txt ${OUTPUTS[$i]}; echo $?)"  
     if [[ $STATUS -ne 0 ]]; then
         echo "Test ${INPUTS[$i]} failed!"
+        echo "Output:"
+        cat test_output.txt
+        echo "Expected:"
+        cat ${OUTPUTS[$i]}
     else
         echo "Test ${INPUTS[$i]} passed!"
     fi
