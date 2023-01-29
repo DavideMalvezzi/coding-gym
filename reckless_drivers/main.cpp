@@ -4,6 +4,8 @@
 #include <iostream>
 #include <algorithm>
 #include <numeric>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 
@@ -12,10 +14,8 @@ int main() {
     cin >> n_samples >> duration;
 
     vector<uint32_t> samples(n_samples);
-    for(uint32_t i = 0; i < n_samples; i++){
-        cin >> samples[i];
-    }
-    
+    copy_n(istream_iterator<uint32_t>(cin), n_samples, samples.begin());
+
     uint32_t tot = inner_product(
         samples.begin(), samples.end() - 1, 
         samples.begin() + 1, 
